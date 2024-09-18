@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_8249cb14b49165a6bfb430e8ec05fd94 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+     bottom: 50px; left: 50px; width: 250px; height: 150px; 
+     background-color: white; border:2px solid grey; z-index:9999; font-size:14px;
+     ">
+     <strong>&nbsp;&nbsp; Legend:</strong><br>
+     &nbsp;&nbsp;<i class="fa fa-map-marker fa-2x" style="color:red"></i>&nbsp; &nbsp; > 100k affected<br>
+     &nbsp;&nbsp;<i class="fa fa-map-marker fa-2x" style="color:orange"></i>&nbsp; &nbsp; 50k - 100k affected<br>
+     &nbsp;&nbsp;<i class="fa fa-map-marker fa-2x" style="color:green"></i>&nbsp; &nbsp; < 50k affected<br>
+</div>
+    
+            <div class="folium-map" id="map_8249cb14b49165a6bfb430e8ec05fd94" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_8249cb14b49165a6bfb430e8ec05fd94 = L.map(
+                "map_8249cb14b49165a6bfb430e8ec05fd94",
+                {
+                    center: [21.9162, 95.956],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 6,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_08b5da7105d600887bb00ab34dd6552f = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_08b5da7105d600887bb00ab34dd6552f.addTo(map_8249cb14b49165a6bfb430e8ec05fd94);
+        
+    
+            var marker_cluster_f185df78331d9e9ac91e01b13e39c83d = L.markerClusterGroup(
+                {}
+            );
+        
+    
+            var marker_e47396c6f98c2c6bd2b1ad7981da5edf = L.marker(
+                [21.9759, 96.083],
+                {}
+            ).addTo(marker_cluster_f185df78331d9e9ac91e01b13e39c83d);
+        
+    
+            var icon_28244407cbbab33fa7be8075ec79ec41 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_e47396c6f98c2c6bd2b1ad7981da5edf.setIcon(icon_28244407cbbab33fa7be8075ec79ec41);
+        
+    
+        var popup_298c303a0b0aac716c1222259f1398f3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9f1f8e6ce2c4e8d4f4be1832698d5d29 = $(`<div id="html_9f1f8e6ce2c4e8d4f4be1832698d5d29" style="width: 100.0%; height: 100.0%;"><strong>Mandalay</strong><br>Affected People: 300k</div>`)[0];
+                popup_298c303a0b0aac716c1222259f1398f3.setContent(html_9f1f8e6ce2c4e8d4f4be1832698d5d29);
+            
+        
+
+        marker_e47396c6f98c2c6bd2b1ad7981da5edf.bindPopup(popup_298c303a0b0aac716c1222259f1398f3)
+        ;
+
+        
+    
+    
+            var marker_f102273dfa4e677261c246a57de1409b = L.marker(
+                [20.1544, 94.9218],
+                {}
+            ).addTo(marker_cluster_f185df78331d9e9ac91e01b13e39c83d);
+        
+    
+            var icon_6d7dea3198693bd1b02cd2b3ef7f3d85 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_f102273dfa4e677261c246a57de1409b.setIcon(icon_6d7dea3198693bd1b02cd2b3ef7f3d85);
+        
+    
+        var popup_26568653d7118c2a3075b1868696649c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0112a1e65f33f0a0344c8b6d6ed3406e = $(`<div id="html_0112a1e65f33f0a0344c8b6d6ed3406e" style="width: 100.0%; height: 100.0%;"><strong>Magway</strong><br>Affected People: 100k</div>`)[0];
+                popup_26568653d7118c2a3075b1868696649c.setContent(html_0112a1e65f33f0a0344c8b6d6ed3406e);
+            
+        
+
+        marker_f102273dfa4e677261c246a57de1409b.bindPopup(popup_26568653d7118c2a3075b1868696649c)
+        ;
+
+        
+    
+    
+            var marker_8fe62704947c2b1d7e74a060a6614eb4 = L.marker(
+                [19.7633, 96.0785],
+                {}
+            ).addTo(marker_cluster_f185df78331d9e9ac91e01b13e39c83d);
+        
+    
+            var icon_adbfcae2d9d248010da239859ef08513 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_8fe62704947c2b1d7e74a060a6614eb4.setIcon(icon_adbfcae2d9d248010da239859ef08513);
+        
+    
+        var popup_bde85845f48ac76dd0a2d982dae45c4e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_62c7beefdd134949cf388aa5971cae89 = $(`<div id="html_62c7beefdd134949cf388aa5971cae89" style="width: 100.0%; height: 100.0%;"><strong>Nay Pyi Taw</strong><br>Affected People: 60k</div>`)[0];
+                popup_bde85845f48ac76dd0a2d982dae45c4e.setContent(html_62c7beefdd134949cf388aa5971cae89);
+            
+        
+
+        marker_8fe62704947c2b1d7e74a060a6614eb4.bindPopup(popup_bde85845f48ac76dd0a2d982dae45c4e)
+        ;
+
+        
+    
+    
+            var marker_e23b15dc796f55ad6733c0b38a8bd10d = L.marker(
+                [20.8306, 96.7735],
+                {}
+            ).addTo(marker_cluster_f185df78331d9e9ac91e01b13e39c83d);
+        
+    
+            var icon_73d2f3c6d67f54a91962e16ecceed906 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_e23b15dc796f55ad6733c0b38a8bd10d.setIcon(icon_73d2f3c6d67f54a91962e16ecceed906);
+        
+    
+        var popup_87e9cbf35d05cd1ecd89e8f10f7a59fa = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_997da065f77a16fd2670a0224c6082d8 = $(`<div id="html_997da065f77a16fd2670a0224c6082d8" style="width: 100.0%; height: 100.0%;"><strong>Southern Shan</strong><br>Affected People: 74k</div>`)[0];
+                popup_87e9cbf35d05cd1ecd89e8f10f7a59fa.setContent(html_997da065f77a16fd2670a0224c6082d8);
+            
+        
+
+        marker_e23b15dc796f55ad6733c0b38a8bd10d.bindPopup(popup_87e9cbf35d05cd1ecd89e8f10f7a59fa)
+        ;
+
+        
+    
+    
+            var marker_9be646fefabe04acad52acee003146e0 = L.marker(
+                [21.0366, 99.9994],
+                {}
+            ).addTo(marker_cluster_f185df78331d9e9ac91e01b13e39c83d);
+        
+    
+            var icon_0607754193f4209e629f45de60e9c85a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_9be646fefabe04acad52acee003146e0.setIcon(icon_0607754193f4209e629f45de60e9c85a);
+        
+    
+        var popup_82c1eb525a22d5227c76d4783f34acf3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d7a0ba1bfcd7fd9761c64fe704b3dab0 = $(`<div id="html_d7a0ba1bfcd7fd9761c64fe704b3dab0" style="width: 100.0%; height: 100.0%;"><strong>Eastern Shan</strong><br>Affected People: 18k</div>`)[0];
+                popup_82c1eb525a22d5227c76d4783f34acf3.setContent(html_d7a0ba1bfcd7fd9761c64fe704b3dab0);
+            
+        
+
+        marker_9be646fefabe04acad52acee003146e0.bindPopup(popup_82c1eb525a22d5227c76d4783f34acf3)
+        ;
+
+        
+    
+    
+            var marker_d44ea1011938e5e9d6aaa4b59150ea39 = L.marker(
+                [16.9917, 97.8605],
+                {}
+            ).addTo(marker_cluster_f185df78331d9e9ac91e01b13e39c83d);
+        
+    
+            var icon_04f202d7c513393a1dbaecd571ac4c3b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_d44ea1011938e5e9d6aaa4b59150ea39.setIcon(icon_04f202d7c513393a1dbaecd571ac4c3b);
+        
+    
+        var popup_fdd1ff75e71aca127774ec26fd137602 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4d281471dba3c010d5e61be24018eedf = $(`<div id="html_4d281471dba3c010d5e61be24018eedf" style="width: 100.0%; height: 100.0%;"><strong>Kayin</strong><br>Affected People: 90k</div>`)[0];
+                popup_fdd1ff75e71aca127774ec26fd137602.setContent(html_4d281471dba3c010d5e61be24018eedf);
+            
+        
+
+        marker_d44ea1011938e5e9d6aaa4b59150ea39.bindPopup(popup_fdd1ff75e71aca127774ec26fd137602)
+        ;
+
+        
+    
+    
+            var marker_551b18036ee82d91436c4f77095d8ab2 = L.marker(
+                [17.3352, 96.498],
+                {}
+            ).addTo(marker_cluster_f185df78331d9e9ac91e01b13e39c83d);
+        
+    
+            var icon_c64c8791ded418fb6ee07c1f8fa99533 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_551b18036ee82d91436c4f77095d8ab2.setIcon(icon_c64c8791ded418fb6ee07c1f8fa99533);
+        
+    
+        var popup_9984025664a7128d965c18af196e9df7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b4c3ec6cecd87dfa2f53b1485b15b736 = $(`<div id="html_b4c3ec6cecd87dfa2f53b1485b15b736" style="width: 100.0%; height: 100.0%;"><strong>Bago</strong><br>Affected People: 87k</div>`)[0];
+                popup_9984025664a7128d965c18af196e9df7.setContent(html_b4c3ec6cecd87dfa2f53b1485b15b736);
+            
+        
+
+        marker_551b18036ee82d91436c4f77095d8ab2.bindPopup(popup_9984025664a7128d965c18af196e9df7)
+        ;
+
+        
+    
+    
+            var marker_cda7f849866692c32b2aff2debc5a8b8 = L.marker(
+                [19.1863, 97.1886],
+                {}
+            ).addTo(marker_cluster_f185df78331d9e9ac91e01b13e39c83d);
+        
+    
+            var icon_822ea95662148d1761b930c54e160bbb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_cda7f849866692c32b2aff2debc5a8b8.setIcon(icon_822ea95662148d1761b930c54e160bbb);
+        
+    
+        var popup_d646c08f2cdd1b3d39304ce981f97a16 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a087543cdf655a85bd33b13d3855c828 = $(`<div id="html_a087543cdf655a85bd33b13d3855c828" style="width: 100.0%; height: 100.0%;"><strong>Kayah</strong><br>Affected People: 9.2k</div>`)[0];
+                popup_d646c08f2cdd1b3d39304ce981f97a16.setContent(html_a087543cdf655a85bd33b13d3855c828);
+            
+        
+
+        marker_cda7f849866692c32b2aff2debc5a8b8.bindPopup(popup_d646c08f2cdd1b3d39304ce981f97a16)
+        ;
+
+        
+    
+    
+            var marker_82318ac6c33c94b76a5d4b04570e3df1 = L.marker(
+                [16.3037, 97.618],
+                {}
+            ).addTo(marker_cluster_f185df78331d9e9ac91e01b13e39c83d);
+        
+    
+            var icon_6f9937379b75d9c13ff49994dd9e3071 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_82318ac6c33c94b76a5d4b04570e3df1.setIcon(icon_6f9937379b75d9c13ff49994dd9e3071);
+        
+    
+        var popup_eaa261e00fee5da4870d76c57d2bfa49 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1b39471d6b824b4b7215baf4ce0c6ebc = $(`<div id="html_1b39471d6b824b4b7215baf4ce0c6ebc" style="width: 100.0%; height: 100.0%;"><strong>Mon</strong><br>Affected People: 0.9k</div>`)[0];
+                popup_eaa261e00fee5da4870d76c57d2bfa49.setContent(html_1b39471d6b824b4b7215baf4ce0c6ebc);
+            
+        
+
+        marker_82318ac6c33c94b76a5d4b04570e3df1.bindPopup(popup_eaa261e00fee5da4870d76c57d2bfa49)
+        ;
+
+        
+    
+    
+            marker_cluster_f185df78331d9e9ac91e01b13e39c83d.addTo(map_8249cb14b49165a6bfb430e8ec05fd94);
+        
+</script>
+</html>
